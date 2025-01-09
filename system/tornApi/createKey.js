@@ -29,11 +29,11 @@ module.exports = async function(Macro, Micro, UserId, reason, complement) {
   return pull(await createkey(Macro, Micro, UserId))
 }
 
-function createkey(Macro, Micro, UserId, reason) {
+async function createkey(Macro, Micro, UserId, reason) {
   var key = keyParts.beforeMacro
   
   if(UserId == null) {
-    key = key.concat(
+    await key = key.concat(
       keyParts.macroOptions[Macro], 
       UserId,
       keyParts.beforeMicro, 
@@ -45,7 +45,7 @@ function createkey(Macro, Micro, UserId, reason) {
     )
   }
   else {
-    key = key.concat(
+    await key = key.concat(
       keyParts.macroOptions[Macro], 
       keyParts.beforeMicro, 
       keyParts.microOptiobs[Micro], 
