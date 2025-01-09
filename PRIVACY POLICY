@@ -1,1 +1,6 @@
+PRIVACY POLICY
 
+Any and all commands executed within the application will NEVER store data.
+This API does not have a database, and all data is embedded either within the source code or in a protected variable file.
+
+This API does not have saves, it will only receive the data and process it. It will never save.
