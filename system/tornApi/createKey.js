@@ -1,5 +1,6 @@
 require('dotenv').config({ path: '../../.env' })
 
+const pull = require('./pullKey.js')
 const keyParts = [{
   beforeMacro: "https://api.torn.com/",
   beforeMicro: "?selections=",
@@ -9,6 +10,7 @@ const keyParts = [{
 
   macroOptions: ["user/"],
   microOptiobs: ["basic/"]
+  
   // with ID
   // https://api.torn.com/MACRO/000000?selections=MICRO&key=KEY
   // without ID
@@ -22,7 +24,9 @@ module.exports = async function(Macro, Micro, UserId, reason, complement) {
   else {
     process.env.key
   }
-  console.log(await createkey(Macro, Micro, UserId))
+
+  // return data
+  return pull(await createkey(Macro, Micro, UserId))
 }
 
 function createkey(Macro, Micro, UserId, reason) {
