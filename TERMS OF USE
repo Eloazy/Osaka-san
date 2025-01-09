@@ -1,1 +1,27 @@
+TERMS OF USE
 
+This Term refers to our API ID: 1326714839761944647
+
+By using our API you accept all the terms present within this document. 
+If you do not agree, you will not be able to use this API.
+
+Please be aware that the terms and privacy policies may be changed at any time if necessary.
+
+TERMS:
+
+1. Developers have the right to shut down the bot at any time if it meets any of these criteria.
+1.1 - non-payment (if a transaction using in-game money "TORNCITY" is requested)
+1.2 - risk updates that may impact server well-being.
+1.3 - changes to TornCity policy, making the API illegal.
+1.4 - misuse by the user, which is characterized as:
+    1.4.1 - tampering with the original code
+    1.4.2 - use of the same to acquire unfair advantages, adding or executing exploits, hacks, cheats, or any type of code of the same nature
+    1.4.3 - misuse, or using it for what it was not intended for
+1.5 unavailability of host servers
+
+2. the host system is up to the customer, we just provide the codes
+2.1 - The Developers can give you a free or private suggestion, be aware that they will never be responsible for problems that occur in relation to the server.
+
+3. The client can choose to remain in possession of the API key, but it should be remembered that this is self-destructive and can lead to irreversible damage to the bot, having to change the key.
+
+4. Its use is only for members of the proposed faction, it should never be transferred or traded. The current leader becomes responsible for the administration of the bot, failure to comply with this may activate clause 1.4.3
