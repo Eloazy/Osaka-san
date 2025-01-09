@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config({ path: '../../.env' })
 
 const keyParts = [{
   beforeMacro: "https://api.torn.com/",
@@ -20,7 +20,7 @@ module.exports = async function(Macro, Micro, UserId, reason, complement) {
     keyParts.key = complement
   }
   else {
-    // use process.env
+    process.env.key
   }
   console.log(await createkey(Macro, Micro, UserId))
 }
