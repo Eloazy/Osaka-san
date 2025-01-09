@@ -1,0 +1,19 @@
+{
+  "name": "Melted-Plastic",
+  "version": "1.0.0",
+  "description": "A BOT to manage Embers server in discord",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Eloazy",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your_username/repo_name.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  }
+}
