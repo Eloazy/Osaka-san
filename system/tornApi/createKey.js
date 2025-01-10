@@ -4,12 +4,12 @@ const pull = require('./pullKey.js')
 const keyParts = [{
   beforeMacro: "https://api.torn.com/",
   beforeMicro: "?selections=",
-  key: "/&key=",
+  key: "&key=",
   comment: "&comment=",
   keySerial: "null",
 
   macroOptions: ["user/"],
-  microOptiobs: ["basic/"]
+  microOptiobs: ["basic"]
   
   // with ID
   // https://api.torn.com/MACRO/000000?selections=MICRO&key=KEY
@@ -19,7 +19,7 @@ const keyParts = [{
 
 module.exports = async function(Macro, Micro, UserId, reason, complement) {
   if(complement !== null) {
-    keyParts.key = complement
+    keyParts.keySerial = complement
   }
   else {
     process.env.key
@@ -34,8 +34,7 @@ async function createkey(Macro, Micro, UserId, reason) {
   
   if(UserId == null) {
     await key = key.concat(
-      keyParts.macroOptions[Macro], 
-      UserId,
+      keyParts.macroOptions[Macro],
       keyParts.beforeMicro, 
       keyParts.microOptiobs[Micro], 
       keyParts.key,
@@ -47,6 +46,7 @@ async function createkey(Macro, Micro, UserId, reason) {
   else {
     await key = key.concat(
       keyParts.macroOptions[Macro], 
+      UserId,
       keyParts.beforeMicro, 
       keyParts.microOptiobs[Micro], 
       keyParts.key,
