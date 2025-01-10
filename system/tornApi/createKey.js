@@ -9,7 +9,7 @@ const keyParts = [{
   keySerial: "null",
 
   macroOptions: ["user/"],
-  microOptiobs: ["basic"]
+  microOptiobs: ["profile"]
   
   // with ID
   // https://api.torn.com/MACRO/000000?selections=MICRO&key=KEY
