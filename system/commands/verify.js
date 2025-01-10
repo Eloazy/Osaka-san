@@ -15,6 +15,7 @@ module.exports = async function(interaction) {
         var vrole = interaction.member.guild.roles.cache.find(role => role.name === "visitant")
         interaction.member.roles.add(vrole)
       }
+      interaction.reply({ content: `thank you ${data.name}, you verifyed yourself, have a good day (serial deleted from our system)`, ephemeral: true})
     }catch(error) {
       console.error("exception in verify.js : ", error)
     }
