@@ -20,3 +20,4 @@ module.exports = async function(interaction) {
       console.error("exception in verify.js : ", error)
     }
   })
+}
