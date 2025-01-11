@@ -8,8 +8,8 @@ const keyParts = {
   comment: "&comment=",
   keySerial: "null",
 
-  macroOptions: ["user/"],
-  microOptiobs: ["profile"]
+  macroOptions: ["user/", "faction/"],
+  microOptiobs: ["profile", "chain"]
   
   // with ID
   // https://api.torn.com/MACRO/000000?selections=MICRO&key=KEY
@@ -22,11 +22,11 @@ module.exports = async function(Macro, Micro, UserId, reason, complement) {
     keyParts.keySerial = complement
   }
   else {
-    process.env.key
+    keyParts.keySerial = process.env.leaderkey
   }
 
   // return data
-  return pull(await createkey(Macro, Micro, UserId))
+  return pull(await createkey(Macro, Micro, UserId, reason))
 }
 
 async function createkey(Macro, Micro, UserId, reason) {
