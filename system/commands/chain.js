@@ -1,30 +1,45 @@
 const { EmbedBuilder } = require('discord.js')
 const requestData = require('../tornApi/createKey.js')
+
+const imageUrl = "https://i.imgur.com/d1odLAd.gif"
+const factionID = null
+const timeoutWarning = 200
+const UpdateTime = 5
+
 var reroll = 1
 var data = 0
 var message = 0
+var arreadySend = false
 
 module.exports = async function(interaction) {
-	data = await requestData(1, 1, 50169, "chainWatcher", null)
+	data = await requestData(1, 1, factionID, "chainWatcher", null)
 	createEmbed(interaction).then((response) => {
 		var interval = setInterval(async function() {
-			if(await chainCheck() == 'died') {
+			if(await chainCheck(interaction) == 'died') {
 				interaction.followUp('Chain DIED')
-				clearInterval(interval).then((response) => {console.log("chainWatcher stopped")})
+				clearInterval(interval)
 			}
 			else {
 				updateEmbed(interaction)
 			}
-		}, 5000)
+		}, UpdateTime*1000)
+		return 0
 	})
+	return 0
 }
 
-function chainCheck() {
+function chainCheck(interaction) {
 	if(data.chain.cooldown == 0 && data.chain.current == 0) {
 		return 'died'
 	}
 	else if(data.chain.cooldown == 0 && data.chain.current > 0){
-		if(data.chain.timeout <= 20) {interaction.followUp('<@&1321151394337787905> Chain Will DIE!!')}
+		if(data.chain.timeout <= timeoutWarning && arreadySend == false) {
+			interaction.followUp('<@&1321151394337787905> Chain Will DIE!!').then((response) => {
+				arreadySend = true
+				return 0
+			})
+		}
+		if (data.chain.timeout > 200 && arreadySend == true) {arreadySend=false}
 	}
 	else {
 		//exception
@@ -44,14 +59,15 @@ async function createEmbed(interaction) {
 			{ name: 'Started:', value: `<t:${data.chain.start}:R>`, inline: true },
 			{ name: 'Modifier:', value: `${data.chain.modifier}`, inline: true },
 		)
-		.setFooter({ text: '5 seconds Update'})
+		.setFooter({ text: `${UpdateTime} seconds update cycle`})
+		.setImage(imageUrl)
 		.setTimestamp()
 	interaction.reply({ embeds: [chain] });
 	message = await interaction.fetchReply()
 }
 
-async function updateEmbed(interaction, message) {
-	data = await requestData(1, 1, 50169, "chainWatcher", null)
+async function updateEmbed(interaction) {
+	data = await requestData(1, 1, factionID, "chainWatcher", null)
 
 	const colors = ["#e81416", "#ffa500", "#faeb36", "#79c314" , "#487de7", "#4b369d", "#70369d"]
 	
@@ -66,9 +82,10 @@ async function updateEmbed(interaction, message) {
 			{ name: 'Started:', value: `<t:${data.chain.start}:R>`, inline: true },
 			{ name: 'Modifier:', value: `${data.chain.modifier}`, inline: true },
 		)
-		.setFooter({ text: '5 seconds Update'})
+		.setFooter({ text: `${UpdateTime} seconds update cycle`})
+		.setImage(imageUrl)
 		.setTimestamp()
 	reroll++
 	if(reroll > 6) {reroll=0}
-	interaction.editReply({ embeds: [chain] });
+	interaction.channel.messages.fetch(message).then(msg => msg.edit({ embeds: [chain] }))
 }
