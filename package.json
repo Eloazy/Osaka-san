@@ -1,6 +1,6 @@
 {
   "name": "Melted-Plastic",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A BOT to manage Embers server in discord",
   "main": "index.js",
   "scripts": {
