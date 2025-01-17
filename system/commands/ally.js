@@ -48,9 +48,9 @@ async function getMembers(id) {
 		var emoji = null
 		var status = null
 		if(data.members[i].status.state == "Okay") {emoji = emojiList[0]}
-		else if(data.members[i].status.state == "Hospital") {emoji = `${emojiList[1]} ${data.members[i].status.details} <t:${data.members[i].status.until}:R>\n`}
-		else if(data.members[i].status.state == "Jail") {emoji = `${emojiList[2]} ${data.members[i].status.details} <t:${data.members[i].status.until}:R>\n`}
-		else if(data.members[i].status.state == "Abroad" || data.members[i].status.state == "Traveling") {emoji = `${emojiList[3]} ${data.members[i].status.details} <t:${data.members[i].status.until}:R>\n\n`}
+		else if(data.members[i].status.state == "Hospital") {emoji = `${emojiList[1]} ${data.members[i].status.details} <t:${data.members[i].status.until}:R>`}
+		else if(data.members[i].status.state == "Jail") {emoji = `${emojiList[2]} ${data.members[i].status.details} <t:${data.members[i].status.until}:R>`}
+		else if(data.members[i].status.state == "Abroad" || data.members[i].status.state == "Traveling") {emoji = `${emojiList[3]} ${data.members[i].status.details} <t:${data.members[i].status.until}:R>`}
 		else if(data.members[i].status.state == "Federal") {emoji = `${emojiList[4]} ${data.members[i].status.details}`}
 		else if(data.members[i].status.state == "Fallen") {emoji = `${emojiList[5]}`}
 		else {emoji = emojiList[6]}

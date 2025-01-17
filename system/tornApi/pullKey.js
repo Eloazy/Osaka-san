@@ -10,6 +10,7 @@ module.exports = async function(link, key) {
         return response.json()
     }).then(data => {
         Data = data
+        console.log('data requested')
     })
     return Data
 }
