@@ -29,7 +29,7 @@ module.exports = async function(interaction) {
 }
 
 function chainCheck(interaction) {
-	if(data.chain.cooldown == 0 && data.chain.current == 0) {
+	if(data.chain.timeout == 0 && data.chain.current == 0) {
 		return 'died'
 	}
 	else if(data.chain.cooldown == 0 && data.chain.current > 0){
@@ -57,7 +57,7 @@ async function createEmbed(interaction) {
 			{ name: 'Time Left:', value: `${data.chain.timeout} seconds left`, inline: true },
 			{ name: '\u200B', value: '\u200B' },
 			{ name: 'Started:', value: `<t:${data.chain.start}:R>`, inline: true },
-			{ name: 'Modifier:', value: `${data.chain.modifier}`, inline: true },
+			{ name: 'Modifier:', value: `${data.chain.modifier}`, inline: true }
 		)
 		.setFooter({ text: `${UpdateTime} seconds update cycle`})
 		.setImage(imageUrl)
@@ -80,7 +80,7 @@ async function updateEmbed(interaction) {
 			{ name: 'Time Left:', value: `${data.chain.timeout} seconds left`, inline: true },
 			{ name: '\u200B', value: '\u200B' },
 			{ name: 'Started:', value: `<t:${data.chain.start}:R>`, inline: true },
-			{ name: 'Modifier:', value: `${data.chain.modifier}`, inline: true },
+			{ name: 'Modifier:', value: `${data.chain.modifier}`, inline: true }
 		)
 		.setFooter({ text: `${UpdateTime} seconds update cycle`})
 		.setImage(imageUrl)
