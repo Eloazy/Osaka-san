@@ -31,14 +31,10 @@ module.exports = function(interaction) {
       interaction.reply('watcher stoped')
     })
   }
-  else if(interaction.options._subcommand == "withdraw") {
-    enemy(interaction, null, true).then((response) => {
+  else if(interaction.options._group == "money") {
+    money(interaction).then((response) => {
       console.log(interaction.user.id+' | run '+interaction.commandName+' command')
-      interaction.reply('watcher stoped')
     })
-  }
-  else if(interaction.options._subcommand == "loan") {
-    interaction.reply('developing')
   }
   else {interaction.reply('this command has not registered or you dont have the perms to use')}
 }
